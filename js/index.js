@@ -3,31 +3,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const genreFilter = document.getElementById('genre-filter');
     const searchInput = document.getElementById('search');
     const paginationControls = document.getElementById('pagination-controls');
+    const loader = document.getElementById('loader');  // Select the loader
     let allBooks = [];
     let currentPage = 1;
     const booksPerPage = 6;
 
+    // Show the loader when fetching starts
+    function showLoader() {
+        loader.style.display = 'block';
+    }
+
+    // Hide the loader when fetching is done
+    function hideLoader() {
+        loader.style.display = 'none';
+    }
+
     // Fetch data from the Gutendex API
-    fetch('https://gutendex.com/books')
-        .then(response => response.json())
-        .then(data => {
-            allBooks = data.results;
-            filterAndDisplayBooks();
-        })
-        .catch(error => {
-            console.error('Error fetching book data:', error);
-            container.innerHTML = '<p>Error loading books. Please try again later.</p>';
-        });
+    function fetchBooks() {
+        showLoader();  // Show loader
+        fetch('https://gutendex.com/books')
+            .then(response => response.json())
+            .then(data => {
+                allBooks = data.results;
+                filterAndDisplayBooks();
+                hideLoader();  // Hide loader when books are displayed
+            })
+            .catch(error => {
+                console.error('Error fetching book data:', error);
+                container.innerHTML = '<p>Error loading books. Please try again later.</p>';
+                hideLoader();  // Hide loader in case of an error
+            });
+    }
 
     // Event listeners for filters and search
     genreFilter.addEventListener('change', function() {
-        currentPage = 1;  
-        filterAndDisplayBooks();  
+        currentPage = 1;
+        filterAndDisplayBooks();
     });
 
     searchInput.addEventListener('input', function() {
-        currentPage = 1;  
-        filterAndDisplayBooks();  
+        currentPage = 1;
+        filterAndDisplayBooks();
     });
 
     function filterAndDisplayBooks() {
@@ -79,39 +95,45 @@ document.addEventListener('DOMContentLoaded', function() {
                       <i class="fa ${isWishlisted ? ' fa-solid fa-heart' : ' fa-regular fa-heart'}" style="cursor: pointer;" data-book-id="${book.id}"></i>
                     </div>
                 </div>
-             
             `;
 
-       // Add event listener to the wishlist icon
-       const wishlistIcon = bookElement.querySelector('.wishlist-icon i');
-       wishlistIcon.addEventListener('click', function() {
-           console.log(`Heart icon clicked for book ID: ${book.id}`);  // Log click event
-           toggleWishlist(book.id);
-           filterAndDisplayBooks(); // Refresh the book display after toggling
-       });
+            // Add event listener to the wishlist icon
+            const wishlistIcon = bookElement.querySelector('.wishlist-icon i');
+            wishlistIcon.addEventListener('click', function() {
+                toggleWishlist(book.id);
+                filterAndDisplayBooks(); 
+            });
 
             container.appendChild(bookElement);
         });
     }
 
-function toggleWishlist(bookId) {
-    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-    if (wishlist.includes(bookId)) {
-        wishlist = wishlist.filter(id => id !== bookId); // Remove from wishlist
-        console.log(`Book ID: ${bookId} removed from wishlist`);
-    } else {
-        wishlist.push(bookId); // Add to wishlist
-        console.log(`Book ID: ${bookId} added to wishlist`);
+    function toggleWishlist(bookId, iconElement) {
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        
+        if (wishlist.includes(bookId)) {
+            wishlist = wishlist.filter(id => id !== bookId);
+            iconElement.classList.remove('fa-solid');
+            iconElement.classList.add('fa-regular');
+            iconElement.setAttribute('title', 'Add to Wishlist');
+        } else {
+            wishlist.push(bookId);
+            iconElement.classList.remove('fa-regular');
+            iconElement.classList.add('fa-solid');
+            iconElement.setAttribute('title', 'Remove from Wishlist');
+        }
+    
+        // Update the local storage with the new wishlist
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
     }
-    localStorage.setItem('wishlist', JSON.stringify(wishlist)); // Update localStorage
-}
+    
     function setupPagination(totalPages) {
         paginationControls.innerHTML = ''; 
 
         const ul = document.createElement('ul');
         ul.classList.add('pagination', 'justify-content-center');  
 
-        if (currentPage > 0) {
+        if (currentPage > 1) {
             const prevLi = document.createElement('li');
             prevLi.classList.add('page-item');
             const prevButton = document.createElement('button');
@@ -156,6 +178,9 @@ function toggleWishlist(bookId) {
             ul.appendChild(nextLi);
         }
 
-        paginationControls.appendChild(ul); 
+        paginationControls.appendChild(ul);
     }
+
+    // Fetch books on page load
+    fetchBooks();
 });

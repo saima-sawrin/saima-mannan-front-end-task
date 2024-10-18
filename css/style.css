@@ -244,6 +244,14 @@ height: 51px;
   color: red; /* Color of the heart icon */
   cursor: pointer; /* Make the heart icon clickable */
 }
+#loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
 .select-with-icon {
   background-image: url('../images/icon/Filter\ 1.png'); /* Replace with your icon */
   background-repeat: no-repeat;
