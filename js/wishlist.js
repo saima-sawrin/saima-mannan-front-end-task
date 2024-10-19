@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         books.forEach(book => {
             const bookElement = document.createElement('div');
-            bookElement.classList.add('col-md-4', 'product-card');
+            bookElement.classList.add( 'product-card');
 
             const imageUrl = book.formats['image/jpeg'] || 'default-book-cover.jpg';
             const authorName = book.authors && book.authors.length > 0 ? book.authors[0].name : 'Unknown Author';

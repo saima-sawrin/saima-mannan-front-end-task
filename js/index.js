@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
             wishlistIcon.addEventListener('click', function () {
                 toggleWishlist(book.id, wishlistIcon);
                 console.log('click', book.id);
+               
             });
 
             container.appendChild(bookElement);
@@ -144,23 +145,96 @@ function restoreUserPreferences() {
     filterAndDisplayBooks();  
 }
     // Toggle wishlist functionality
-    function toggleWishlist(bookId, iconElement) {
-        console.log(bookId);
-        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        if (wishlist.includes(bookId)) {
-            wishlist = wishlist.filter(id => id !== bookId);
-            iconElement.classList.remove('fa-solid');
-            iconElement.classList.add('fa-regular');
-            iconElement.setAttribute('title', 'Add to Wishlist');
-        } else {
-            wishlist.push(bookId);
-            iconElement.classList.remove('fa-regular');
-            iconElement.classList.add('fa-solid');
-            iconElement.setAttribute('title', 'Remove from Wishlist');
-        }
+
+// function toggleWishlist(bookId, iconElement) {
+//     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+//     // Check if the book is already in the wishlist
+//     if (wishlist.includes(bookId)) {
+//         // Remove from wishlist
+//         wishlist = wishlist.filter(id => id !== bookId);
+//         iconElement.classList.remove('fa-solid');
+//         iconElement.classList.add('fa-regular');
+//         iconElement.setAttribute('title', 'Add to Wishlist');
+//         localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+//         // Show alert for removal
+//         alert('Book has been removed from your wishlist.');
+//     } else {
+//         // Add to wishlist
+//         wishlist.push(bookId);
+//         iconElement.classList.remove('fa-regular');
+//         iconElement.classList.add('fa-solid');
+//         iconElement.setAttribute('title', 'Remove from Wishlist');
+//         localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+//         // Show alert for addition
+//         alert('Book has been added to your wishlist.');
+//     }
+// }
+
+// Toggle wishlist functionality with immediate icon update
+function toggleWishlist(bookId, iconElement) {
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+    // Check if the book is already in the wishlist
+    if (wishlist.includes(bookId)) {
+        // Remove from wishlist
+        wishlist = wishlist.filter(id => id !== bookId);
+
+        // Update the icon to 'Add to Wishlist' (empty heart)
+        iconElement.classList.remove('fa-solid');
+        iconElement.classList.add('fa-regular');
+        iconElement.setAttribute('title', 'Add to Wishlist');
+        
+        // Update localStorage
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
-      
+
+        // Show alert for removal
+        alert('Book has been removed from your wishlist.');
+    } else {
+        // Add to wishlist
+        wishlist.push(bookId);
+
+        // Update the icon to 'Remove from Wishlist' (filled heart)
+        iconElement.classList.remove('fa-regular');
+        iconElement.classList.add('fa-solid');
+        iconElement.setAttribute('title', 'Remove from Wishlist');
+        
+        // Update localStorage
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+        // Show alert for addition
+        alert('Book has been added to your wishlist.');
     }
+}
+
+// Function to set up wishlist event listeners
+function setupWishlistEventListeners() {
+    const wishlistIcons = document.querySelectorAll('.wishlist-icon i');
+    wishlistIcons.forEach(icon => {
+        icon.addEventListener('click', function () {
+            const bookId = this.getAttribute('data-book-id');
+            toggleWishlist(bookId, this); // Pass the icon element to update it on click
+        });
+    });
+}
+
+// Call this function after books are displayed to attach event listeners to the wishlist icons
+setupWishlistEventListeners();
+
+
+// Function to set up wishlist event listeners
+function setupWishlistEventListeners() {
+    const wishlistIcons = document.querySelectorAll('.wishlist-icon i');
+    wishlistIcons.forEach(icon => {
+        icon.addEventListener('click', function () {
+            const bookId = this.getAttribute('data-book-id');
+            toggleWishlist(bookId, this); // Pass the icon element to update it on click
+        });
+    });
+}
+setupWishlistEventListeners();
 
     // Setup pagination
     function setupPagination(totalPages) {
