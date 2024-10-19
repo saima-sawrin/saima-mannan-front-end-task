@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 allBooks = data.results;
                 populateGenres();
                 filterAndDisplayBooks();
+                restoreUserPreferences(); 
                 hideLoader();
             })
             .catch(error => {
@@ -63,6 +64,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const genreMatch = selectedGenre === "" || genres.some(subject => subject.toLowerCase().includes(selectedGenre));
             return titleMatch && genreMatch;
         });
+        localStorage.setItem('Search Books', JSON.stringify(searchQuery));
+        localStorage.setItem('Filter Books', JSON.stringify(selectedGenre));
+    
 
         const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
         const start = (currentPage - 1) * booksPerPage;
@@ -128,7 +132,17 @@ document.addEventListener('DOMContentLoaded', function () {
             container.appendChild(bookElement);
         });
     }
+// Restore search and filter preferences from localStorage
+function restoreUserPreferences() {
+    const savedSearch = localStorage.getItem('SearchBooks') || "";
+    const savedFilter = localStorage.getItem('FilterBooks') || "";
 
+    searchInput.value = savedSearch;  
+    genreFilter.value = savedFilter;  
+    
+
+    filterAndDisplayBooks();  
+}
     // Toggle wishlist functionality
     function toggleWishlist(bookId, iconElement) {
         console.log(bookId);
