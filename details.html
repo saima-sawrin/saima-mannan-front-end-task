@@ -543,7 +543,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.json())
             .then(data => {
                 // Display the book details on the page
-                document.getElementById('book-cover').src = data.formats["image/jpeg"];
+                document.getElementById('book-cover').src = data.formats["image/jpeg"]|| formats["image/png"] || 'default-book-cover.jpg';
                 document.getElementById('book-title').textContent = data.title;
                 document.getElementById('book-author').textContent = data.authors[0].name;
                 document.getElementById('book-id').textContent = data.id;
