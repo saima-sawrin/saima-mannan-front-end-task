@@ -12,15 +12,11 @@
       <!-- Font awesome-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/regular.min.css" integrity="sha512-j+P0XpTXw+hDTK64xqC/cjv62cf629/IR4/0bokmich7J8XdVlWT40+1M/Z58rCQ4F+3QoJIfzh6Ui6TTIP6WQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!-- select 2 css -->
-<link href="select2/css/select2.min.css" rel="stylesheet" />
- <!-- Link Swiper's CSS -->
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <link rel="stylesheet" href="css/style.css">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
 </head>
-  <body>
+<body>
 
 <main>
 
@@ -34,7 +30,7 @@
             <span class="navbar-toggler-icon "></span>
             <span class="navbar-toggler-icon-close d-none"><i class="fa-solid fa-x" style="color: white;"></i></i></span>
           </button>
-          <div class="collapse navbar-collapse fs-5" id="navbarSupportedContent" style="justify-content:space-evenly;">
+          <div class="collapse navbar-collapse fs-md-4" id="navbarSupportedContent" style="justify-content:space-evenly;">
          
             <ul class="navbar-nav  mb-2 mb-lg-0">
    
@@ -66,7 +62,7 @@
         </div>
       </nav>
   <!-- Navbar end -->
-  <!-- Avertisement section -->
+
   <section class="my-5">
     <div class="container-sm">
 
@@ -94,9 +90,7 @@
                                 <i class="fa-regular fa-heart" style="color: #EB1C1C; font-size: 25px;"></i>
                             </div>
                         </div>
-                        <h4 class="my-3" style="color: #FB470F;">
-                            Price: <span id="book-price">Free</span>
-                        </h4>
+                      
                         <div class="p-table">
                             <table>
                                 <tbody>
@@ -116,17 +110,14 @@
                                         <td>Available Formats</td>
                                         <td id="book-formats">ePub, PDF</td>
                                     </tr>
-                                </tbody>
-                            </table>
-                            <hr>
-                            <table>
-                                <tbody>
+                                    <hr>
                                     <tr>
                                         <td><b>Author:</b></td>
                                         <td id="book-author"> Author Name</td>
                                     </tr>
                                 </tbody>
                             </table>
+                            
                         </div>
                     </div>
                 </div>
@@ -137,21 +128,6 @@
     </div>
    
 
-<div class="container">
-    <div class=" w-100 mb-4 px-4 py-2" style="background-color: #EFEFEF; height: 100px;">
-        <h4 class="fw-bold">Product Ratings</h4>
-    </div>
-    <div class="px-4 py-2" style="background-color: #EFEFEF; height: fit-content;">
-        <h4 class="fw-bold" >Specification</h4>
-     <p style="text-align: justify;">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-    <div class=" w-100 my-4 px-4 py-2" style="background-color: #EFEFEF; height: fit-content;">
-        <h4 class="fw-bold">Tags</h4>
-        <button type="button" style="border: 2px solid #39ECAB; color: #39ECAB; background-color: transparent; padding: 4px 8px; font-weight: 500;">Local Seller</button>
-        <button type="button" style="border: 2px solid #394BEC; color: #394BEC; background-color: transparent;padding: 4px 8px; font-weight: 500;">COD</button>
-    </div>
-</div>
 <!-- Review Section -->
 <div class="container">
     <div class="row d-flex justify-content-center">
@@ -160,31 +136,8 @@
           
             <div class="card-body m-2">
               <h4 class="fw-bold">Product Ratings</h4>
-              <div class="w-100 pr-div" style="background-color: #FBF6E6; height: auto; border: 1px solid #DED3AE;">
-                <div class="item1">
-                  <span style="position: relative;">
-                    <h6 style="color: #FB470F;" class="fw-bold"><span style="font-size: 30px;">4.7</span> out of 5</h6>
-                     <i class="fa-solid fa-star" style="color: #FB470F;"></i> 
-                     <i class="fa-solid fa-star" style="color: #FB470F;"></i> 
-                     <i class="fa-solid fa-star" style="color: #FB470F;"></i> 
-                     <i class="fa-solid fa-star" style="color: #FB470F;"></i> 
-                     <i class="fa-solid fa-star" style="color: #C4C4C4;"></i> 
-                 </span>
+            
               
-              
-              </div>
-              <div class="item2">
-                <button type="button" class="btn btn-light border-2 rounded-1 fw-medium   text-black my-1  " style="border: 1px solid #FB470F;">All</button>
-                <button type="button" class="btn btn-light border-2 btn-border-color rounded-1 fw-medium  text-black my-1 ">5 Star (333)</button>
-                <button type="button" class="btn btn-light border-2 btn-border-color rounded-1 fw-medium  text-black my-1 ">4 Star (18)</button>
-                <button type="button" class="btn btn-light border-2 btn-border-color rounded-1 fw-medium  text-black my-1 ">4 Star (18)</button>
-                <button type="button" class="btn btn-light border-2 btn-border-color rounded-1 fw-medium  text-black my-1 ">3 Star (17)</button>
-                <button type="button" class="btn btn-light border-2 btn-border-color rounded-1 fw-medium  text-black my-1 ">2 Star (12)</button>
-                <button type="button" class="btn btn-light border-2 btn-border-color rounded-1 fw-medium  text-black my-1 ">1 Star (5)</button>
-                <button type="button" class="btn btn-light border-2 btn-border-color rounded-1 fw-medium  text-black my-1 ">With Comments (151)</button>
-                <button type="button" class="btn btn-light border-2 btn-border-color rounded-1 fw-medium  text-black my-1 ">With Media (102)</button>
-              </div>
-              </div>
               <div class="row mt-2">
                 <div class="col-lg-2 d-flex justify-content-center align-items-center mt-2 " style="margin-bottom: auto; width: auto;">
                   <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20%2810%29.webp"
@@ -209,30 +162,7 @@
                 </div>
               </div>
               <hr>
-              <div class="row mt-2">
-                <div class="col-lg-2 d-flex justify-content-center align-items-center mt-2 " style="margin-bottom: auto; width: auto;">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20%2810%29.webp"
-                    class="rounded-circle img-fluid shadow-1" alt="woman avatar" width="70" height="70" />
-                </div>
-                <div class="col-lg-10">
-              
-                  <p class="fw-bold lead mb-2"><strong>Wayne</strong></p>
-               <span style="position: relative;">
-                    <i class="fa-solid fa-star" style="color: #FB470F;"></i> 
-                    <i class="fa-solid fa-star" style="color: #FB470F;"></i> 
-                    <i class="fa-solid fa-star" style="color: #FB470F;"></i> 
-                    <i class="fa-solid fa-star" style="color: #FB470F;"></i> 
-                    <i class="fa-solid fa-star" style="color: #C4C4C4;"></i> 
-                </span>
-                  <p class="text-muted fw-light mb-4" style="text-align: justify;">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id quam sapiente
-                    molestiae numquam quas, voluptates omnis nulla ea odio quia similique
-                    corrupti magnam.
-                  </p>
-                
-                </div>
-              </div>
-              <hr>
+        
               <h4 class="fw-bold">Post a comment</h4>
               <textarea name="" id="" class="w-100" style="height: 100px;"></textarea>
               <div class="d-flex my-4" style="justify-content: end;">

@@ -47,11 +47,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="product-details">
                     <h5 class="book-title">${book.title}</h5>
                     <div class="book-author">Author: ${authorName}</div>
-                    <div class="book-id">ID: ${bookID}</div>
+                 
                     <div class="book-genre">Genre: ${genres}</div>
-                    <div class="wishlist-icon">
+                   <div class="card-footer">
+                    <div class=" d-flex" style="justify-content: space-between;  ">
+                       <div class="book-id">ID: ${bookID}</div>
+                          <div class="wishlist-icon">
                         <i class="fa fa-solid fa-heart" style="cursor: pointer;" data-book-id="${book.id}" title="Remove from Wishlist"></i>
                     </div>
+                   </div>
+                    </div>
+                 
                 </div>
             `;
 

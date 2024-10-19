@@ -369,7 +369,7 @@ height: 51px;
 }
   .h-logo, .f-logo {
     width:
-     127px;
+     110px;
 }
 .user{
   margin-right: 30px;
@@ -416,13 +416,8 @@ height: 51px;
 .dropdown-menu[aria-labelledby="languageDropdownToggle"] {
   width: 100px;
 }
+.pr-div{
+  padding: 0 10px;
 }
-@media (max-width: 412px) {
-  
 }
-@media (max-width: 360px) {
 
-  .search {
-    width: 93%;
-}
-}

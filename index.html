@@ -12,8 +12,6 @@
       <!-- Font awesome-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/regular.min.css" integrity="sha512-j+P0XpTXw+hDTK64xqC/cjv62cf629/IR4/0bokmich7J8XdVlWT40+1M/Z58rCQ4F+3QoJIfzh6Ui6TTIP6WQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!-- select 2 css -->
-<link href="select2/css/select2.min.css" rel="stylesheet" />
 
 <link rel="stylesheet" href="css/style.css">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -33,7 +31,7 @@
           <span class="navbar-toggler-icon "></span>
           <span class="navbar-toggler-icon-close d-none"><i class="fa-solid fa-x" style="color: white;"></i></i></span>
         </button>
-        <div class="collapse navbar-collapse fs-5" id="navbarSupportedContent" style="justify-content:space-evenly;">
+        <div class="collapse navbar-collapse fs-md-4" id="navbarSupportedContent" style="justify-content:space-evenly;">
        
           <ul class="navbar-nav  mb-2 mb-lg-0">
  
@@ -280,10 +278,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/regular.min.js" integrity="sha512-kOmvRi+0imoekwslOzP/X1LXQnzcttzqYYt3urKD4nhd5fMYwRfXgDS5Nh7b7pQjKPjBPSX9PmhCLrkfkxUcBQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<!-- select2 js -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="select2/js/select2.min.js"></script>
-
 
 
 <script>
@@ -303,14 +297,14 @@
   
   // When the navbar is expanded (shown), show the close (cross) icon
   navbarCollapse.addEventListener('shown.bs.collapse', function () {
-    togglerIcon.classList.add('d-none');  // Hide hamburger icon
-    closeIcon.classList.remove('d-none'); // Show cross icon
+    togglerIcon.classList.add('d-none');  
+    closeIcon.classList.remove('d-none'); 
   });
   
   // When the navbar is collapsed (hidden), show the hamburger icon
   navbarCollapse.addEventListener('hidden.bs.collapse', function () {
-    togglerIcon.classList.remove('d-none');  // Show hamburger icon
-    closeIcon.classList.add('d-none');      // Hide cross icon
+    togglerIcon.classList.remove('d-none');  
+    closeIcon.classList.add('d-none');      
   });
   
   

@@ -241,7 +241,7 @@ setupWishlistEventListeners();
         paginationControls.innerHTML = '';
 
         const ul = document.createElement('ul');
-        ul.classList.add('pagination', 'justify-content-center');
+        ul.classList.add('pagination', 'justify-content-center','px-0');
 
         if (currentPage > 0) {
             const prevLi = document.createElement('li');
