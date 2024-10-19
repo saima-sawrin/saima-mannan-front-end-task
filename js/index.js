@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         loader.style.display = 'none';
     }
 
-    // Fetch data from the Gutendex API
+    // Fetch data from the  API
     function fetchBooks() {
         showLoader();
         fetch('https://gutendex.com/books')
@@ -76,11 +76,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Display books
     function displayBooks(books) {
         container.innerHTML = '';
-        const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
         books.forEach(book => {
             const bookElement = document.createElement('div');
-            bookElement.classList.add('col-md-4', 'product-card');
+            bookElement.classList.add('product-card','card', 'px-0');
 
             const imageUrl = book.formats['image/jpeg'] || 'default-book-cover.jpg';
             const authorName = book.authors && book.authors.length > 0 ? book.authors[0].name : 'Unknown Author';
@@ -88,29 +88,41 @@ document.addEventListener('DOMContentLoaded', function () {
             const bookID = book.id ? book.id : 'ID not available';
 
             const isWishlisted = wishlist.includes(book.id);
-
+            
+  // Truncate genres if they exceed 30 characters
+  let truncatedGenres = genres;
+  if (genres.length > 30) {
+      truncatedGenres = genres.slice(0, 40) + '...';
+  }
             bookElement.innerHTML = `
                 <div class="product-tumb">
                     <img src="${imageUrl}" alt="${book.title}" class="img-fluid">
                 </div>
-                <div class="product-details">
+                <div class="product-details card-body">
                 <a href="details.html?id=${book.id}" target="_blank">
-    <h5 class="book-title">${book.title}</h5>
+    <h6 class="book-title">${book.title}</h6>
 </a>
 
            
                     <div class="book-author">Author: ${authorName}</div>
-                    <div class="book-genre">Genre: ${genres}</div>
-                    <div class="wishlist-icon" title="${isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}">
-                      <i class="fa ${isWishlisted ? ' fa-solid fa-heart' : ' fa-regular fa-heart'}" style="cursor: pointer;" data-book-id="${book.id}"></i>
-                    </div>
+                          
+                 <div class="book-genre" title="${genres}">Genre: ${truncatedGenres}</div>
+
                 </div>
+                <div class="card-footer">
+                 <div class="d-flex" style="justify-content: space-between;  ">
+                  <div class="book-id">ID: ${bookID}</div>
+                    <button class="wishlist-icon " title="${isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}">
+                      <i class="fa ${isWishlisted ? ' fa-solid fa-heart' : ' fa-regular fa-heart'}" style="cursor: pointer;" data-book-id="${book.id}"></i>
+                    </button>
+                 </div>
+               </div>
             `;
 
-            const wishlistIcon = bookElement.querySelector('.wishlist-icon i');
+            const wishlistIcon = bookElement.querySelector('.wishlist-icon');
             wishlistIcon.addEventListener('click', function () {
                 toggleWishlist(book.id, wishlistIcon);
-                // console.log('click');
+                console.log('click', book.id);
             });
 
             container.appendChild(bookElement);
@@ -143,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const ul = document.createElement('ul');
         ul.classList.add('pagination', 'justify-content-center');
 
-        if (currentPage > 1) {
+        if (currentPage > 0) {
             const prevLi = document.createElement('li');
             prevLi.classList.add('page-item');
             const prevButton = document.createElement('button');

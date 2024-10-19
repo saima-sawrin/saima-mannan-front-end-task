@@ -213,6 +213,8 @@ footer h5{
   font-size: 20px;
   color: red; /* Color of the heart icon */
   cursor: pointer; /* Make the heart icon clickable */
+  border: none !important;
+  background-color: transparent;
 }
 #loader {
   position: fixed;
@@ -233,14 +235,14 @@ footer h5{
 /* Product card css */
 .product-card {
   position: relative;
-  /* box-shadow: 0 2px 7px #dfdfdf;
-  background: #fafafa; */
+  /* box-shadow: 0 2px 7px #dfdfdf; */
+  background: #fafafa;
   opacity: 0;
   animation: fadeIn 2s;
+  border: none;
   /* animation-delay: 3s; */
   animation-fill-mode: forwards;
 }
-
 @keyframes fadeIn {
   from {opacity: 0;}
   to{opacity: 1;}
@@ -251,7 +253,7 @@ footer h5{
   align-items: center;
   justify-content: center;
   height: 200px;
-  background: #f0f0f0;
+  /* background: #f0f0f0; */
 }
 
 .product-tumb img {
@@ -274,18 +276,10 @@ footer h5{
   margin-bottom: 18px;
 }
 
-.product-details h4 a {
-  font-weight: 500;
-  display: block;
-  margin-bottom: 18px;
-  text-transform: uppercase;
-  color: #363636;
-  text-decoration: none;
-  transition: 0.3s;
-}
 
-.product-details h4 a:hover {
-  color: #fbb72c;
+
+.product-details .book-title:hover {
+  color: #FF5A5F;
 }
 
 .product-details p {
@@ -320,20 +314,9 @@ footer h5{
   margin-right: 5px;
 }
 
-.product-links {
-  text-align: right;
-}
-
-.product-links a {
-  display: inline-block;
-  margin-left: 5px;
-  color: #e1e1e1;
-  transition: 0.3s;
-  font-size: 17px;
-}
-
-.product-links a:hover {
-  color: #fbb72c;
+.card-footer{
+  background-color: transparent;
+  border: none;
 }
 
 /* Product Details CSS */
