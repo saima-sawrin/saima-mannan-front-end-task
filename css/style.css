@@ -175,7 +175,7 @@ footer h5{
   padding: 10px 20px;
   border-radius: 22px 0 0 22px;
   outline: none;
-  color: #9DBFAF;
+  color: black;
   height:calc(1.9em + 0.75rem + 2px) !important ;
 }
 .p-list  .searchButton {
@@ -386,9 +386,7 @@ height: 51px;
 }
 }
 @media (max-width: 768px) {
-  .h-logo, .f-logo {
-  margin-left: -10px;
-}
+
   nav .wrap {
     position: relative;
     left: 0%;

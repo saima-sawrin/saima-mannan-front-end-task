@@ -108,9 +108,9 @@ document.addEventListener('DOMContentLoaded', function () {
 </a>
 
            
-                    <div class="book-author">Author: ${authorName}</div>
+                    <div class="book-author"> ${authorName}</div>
                           
-                 <div class="book-genre" title="${genres}">Genre: ${truncatedGenres}</div>
+                 <div class="book-genre" title="${genres}">${truncatedGenres}</div>
 
                 </div>
                 <div class="card-footer">
