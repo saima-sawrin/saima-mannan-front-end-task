@@ -94,9 +94,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     <img src="${imageUrl}" alt="${book.title}" class="img-fluid">
                 </div>
                 <div class="product-details">
-                    <h5 class="book-title">${book.title}</h5>
+                <a href="details.html?id=${book.id}" target="_blank">
+    <h5 class="book-title">${book.title}</h5>
+</a>
+
+           
                     <div class="book-author">Author: ${authorName}</div>
-                    <div class="book-id">ID: ${bookID}</div>
                     <div class="book-genre">Genre: ${genres}</div>
                     <div class="wishlist-icon" title="${isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}">
                       <i class="fa ${isWishlisted ? ' fa-solid fa-heart' : ' fa-regular fa-heart'}" style="cursor: pointer;" data-book-id="${book.id}"></i>
@@ -107,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const wishlistIcon = bookElement.querySelector('.wishlist-icon i');
             wishlistIcon.addEventListener('click', function () {
                 toggleWishlist(book.id, wishlistIcon);
+                // console.log('click');
             });
 
             container.appendChild(bookElement);
@@ -115,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Toggle wishlist functionality
     function toggleWishlist(bookId, iconElement) {
+        console.log(bookId);
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
         if (wishlist.includes(bookId)) {
             wishlist = wishlist.filter(id => id !== bookId);
@@ -128,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
             iconElement.setAttribute('title', 'Remove from Wishlist');
         }
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      
     }
 
     // Setup pagination
